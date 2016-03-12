@@ -21,63 +21,34 @@ var TableEditable = function () {
         function editRow(oTable, nRow) {
             var aData = oTable.fnGetData(nRow);
             var jqTds = $('>td', nRow);
-            jqTds[0].innerHTML = '<input type="text" class="form-control input-small" value="' + aData._id + '">';
+            jqTds[0].innerHTML = '<input type="text" class="form-control input-small" value="' + aData._id + '" disabled>';
             jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData.name + '">';
             jqTds[2].innerHTML = '<input type="text" class="form-control input-small" value="' + aData.nfcid + '">';
             jqTds[3].innerHTML = '<a class="cancel" href="">cancel</a>';
-            jqTds[4].innerHTML = '<a class="save" href="">Save</a>';
+            jqTds[4].innerHTML = '<a class="edit" href="">Save</a>';
+            // jqTds[5].innerHTML = ;
+        }
+
+        function addRow(oTable, nRow) {
+            var aData = oTable.fnGetData(nRow);
+            var jqTds = $('>td', nRow);
+            jqTds[0].innerHTML = '<input type="text" class="form-control input-small" disabled>';
+            jqTds[1].innerHTML = '<input type="text" class="form-control input-small">';
+            jqTds[2].innerHTML = '<input type="text" class="form-control input-small">';
+            jqTds[3].innerHTML = '<a class="cancel" href="">cancel</a>';
+            jqTds[4].innerHTML = '<a class="babi" href="">Save</a>';
             // jqTds[5].innerHTML = ;
         }
 
         function saveRow(oTable, nRow) {
             var jqInputs = $('input', nRow);
-            alert(jqInputs[0].value);
+            // alert(jqInputs[0].value);
             oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
             oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
             oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
             oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 4, false);
             oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 5, false);
             oTable.fnDraw();
-
-            // $.ajax({
-            //    url:'https://188.166.247.55:8080/handshake',
-            //    dataType: 'text',
-            //    method: 'POST',
-            //    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            //    success: function(response){
-            //      obj = JSON.parse(response);
-            //      //obj.token
-            //        $.ajax({
-            //         url: 'https://188.166.247.55:8080/addEmployee',
-            //         dataType: 'text',
-            //         method: 'POST',
-            //         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            //         data: {
-            //           session: localStorage.getItem('session'),
-            //           nfcid:nRow.cells[2].innerHTML,
-            //           token:obj.token
-            //         },
-            //         success: function(response){
-            //           obj = JSON.parse(response);
-            //           var temp = nRow.cells[1].innerHTML+" telah dihapus!";
-            //           if (obj.message == temp) {
-            //             alert(temp);
-            //             window.location.assign('table_editable.html');
-            //           }
-            //         },
-            //         error: function(xhr, status, error){
-            //           alert(error);
-            //         },
-            //         complete: function(){
-            //         }
-            //       });
-            //    },
-            //    error: function(xhr, status, error){
-            //      alert(error);
-            //    },
-            //    complete: function(){
-            //    }
-            //  });
         }
 
         function cancelEditRow(oTable, nRow) {
@@ -112,7 +83,7 @@ var TableEditable = function () {
             //},
 
             // set the initial value
-            "pageLength": 10,
+            "pageLength": 5,
 
             "language": {
                 "lengthMenu": " _MENU_ records"
@@ -173,6 +144,7 @@ var TableEditable = function () {
 
         $('#sample_editable_1_new').click(function (e) {
             e.preventDefault();
+            alert = function() {};
 
             if (nNew && nEditing) {
                 if (confirm("Previose row not saved. Do you want to save it ?")) {
@@ -188,16 +160,12 @@ var TableEditable = function () {
 
                     return;
                 }
-            }else if (nEditing == nRow && this.innerHTML == "Save") {
-                /* Editing this row and want to save it */
-                saveRow(oTable, nEditing);
-                nEditing = null;
-                alert("Updated! Do not forget to do some ajax to sync with backend :)");
             }
 
             var aiNew = oTable.fnAddData(['', '', '', '', '', '']);
             var nRow = oTable.fnGetNodes(aiNew[0]);
-            editRow(oTable, nRow);
+            addRow(oTable, nRow);
+            // editRow(oTable, nRow);
             nEditing = nRow;
             nNew = true;
         });
@@ -235,7 +203,7 @@ var TableEditable = function () {
                       var temp = nRow.cells[1].innerHTML+" telah dihapus!";
                       if (obj.message == temp) {
                         alert(temp);
-                        window.location.assign('table_editable.html');
+                        window.location.assign('table_editable');
                       }
                     },
                     error: function(xhr, status, error){
@@ -265,16 +233,55 @@ var TableEditable = function () {
             }
         });
 
-        table.on('click', '.save', function (e) {
-            e.preventDefault();
+        table.on('click', '.babi', function (e) {
+            // e.preventDefault();
+            var nRow = $(this).parents('tr')[0];
+            var jqTds = $('input', nRow);
+            var aData = oTable.fnGetData(nRow);
 
-            if (nNew) {
-                oTable.fnDeleteRow(nEditing);
-                nEditing = null;
-                nNew = false;
-            } else {
-              alert('save');
-            }
+            // console.log(jqTds[1].value);
+            $.ajax({
+               url:'https://188.166.247.55:8080/handshake',
+               dataType: 'text',
+               method: 'POST',
+               contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+               success: function(response){
+                 obj = JSON.parse(response);
+                 $.ajax({
+                  url: 'https://188.166.247.55:8080/addEmployee',
+                  dataType: 'text',
+                  method: 'POST',
+                  contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                  data: {
+                    session: localStorage.getItem('session'),
+                    nfcid:jqTds[2].value,
+                    name:jqTds[1].value,
+                    _id:jqTds[0].value,
+                    token:obj.token
+                  },
+                  success: function(response){
+                    obj = JSON.parse(response);
+                    if (obj.message == 'nfcid has been used') {
+
+                    }else{
+                     saveRow(oTable, nEditing);
+                    //  window.location.assign('table_editable');
+                    }
+                    console.log(obj.message);
+                  },
+                  error: function(xhr, status, error){
+                    alert(error);
+                  },
+                  complete: function(){
+                  }
+                });
+               },
+               error: function(xhr, status, error){
+                 alert(error);
+               },
+               complete: function(){
+               }
+             });
 
         });
 
@@ -283,17 +290,57 @@ var TableEditable = function () {
 
             /* Get the row as a parent of the link that was clicked on */
             var nRow = $(this).parents('tr')[0];
+            var jqTds = $('input', nRow);
 
             if (nEditing !== null && nEditing != nRow) {
                 /* Currently editing - but not this row - restore the old before continuing to edit mode */
                 restoreRow(oTable, nEditing);
                 editRow(oTable, nRow);
                 nEditing = nRow;
-            } else if (nEditing == nRow && this.innerHTML == "Save") {
+            } else if (nEditing == nRow || this.innerHTML == "Save") {
                 /* Editing this row and want to save it */
+                // alert("Updated! Do not forget to do some ajax to sync with backend :)");
+                $.ajax({
+                   url:'https://188.166.247.55:8080/handshake',
+                   dataType: 'text',
+                   method: 'POST',
+                   contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                   success: function(response){
+                     obj = JSON.parse(response);
+                     $.ajax({
+                      url: 'https://188.166.247.55:8080/addEmployee',
+                      dataType: 'text',
+                      method: 'POST',
+                      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                      data: {
+                        session: localStorage.getItem('session'),
+                        nfcid:jqTds[2].value,
+                        name:jqTds[1].value,
+                        _id:jqTds[0].value,
+                        token:obj.token
+                      },
+                      success: function(response){
+                        obj = JSON.parse(response);
+                        if (obj.message == 'nfcid has been used') {
+                          alert('nfcid has been used');
+                        }
+                        console.log(obj.message);
+                      },
+                      error: function(xhr, status, error){
+                        alert(error);
+                      },
+                      complete: function(){
+                      }
+                    });
+                   },
+                   error: function(xhr, status, error){
+                     alert(error);
+                   },
+                   complete: function(){
+                   }
+                 });
                 saveRow(oTable, nEditing);
                 nEditing = null;
-                alert("Updated! Do not forget to do some ajax to sync with backend :)");
             } else {
                 /* No edit in progress - let's start one */
                 editRow(oTable, nRow);
