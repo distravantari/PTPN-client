@@ -81,16 +81,27 @@ var TableEditable = function () {
                 [0, "asc"]
             ], // set first column as a default sort by asc
 
-            "ajax": {
-                 "url": "https://188.166.247.55:8080/getAllEmployee",
-                 "type": "POST",
-                 "data": function ( d ) {
-                     d.token = localStorage.getItem('token');
-                     // d.custom = $('#myInput').val();
-                     // etc
+             "ajax": { // define ajax settings
+                 "url": "https://188.166.247.55:8080/getAllEmployee", // ajax URL
+                 "type": "POST", // request type
+                 "timeout": 20000,
+                 "data": function(data) { // add request parameters before submit
+                     data.token = localStorage.getItem('token');
+                 },
+                 "dataSrc": function (json) {
+                   alert(json[0]._id);
+                  return json;
                  }
-             }
+               },
+
             // "data": [
+            //     [
+            //       "Airi",
+            //       "Satou",
+            //       "Accountant",
+            //       "Edit",
+            //       "Delete",
+            //     ],
             //     [
             //       "Airi",
             //       "Satou",
