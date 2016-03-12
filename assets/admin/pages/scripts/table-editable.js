@@ -6,47 +6,94 @@ var TableEditable = function () {
             var aData = oTable.fnGetData(nRow);
             var jqTds = $('>td', nRow);
 
-            for (var i = 0, iLen = jqTds.length; i < iLen; i++) {
-                oTable.fnUpdate(aData[i], nRow, i, false);
-            }
-            oTable.fnDraw();
+            // for (var i = 0, iLen = jqTds.length; i < iLen; i++) {
+            //     oTable.fnUpdate(aData[i], nRow, i, false);
+            // }
+            // oTable.fnDraw();
+            jqTds[0].innerHTML = aData._id;
+            jqTds[1].innerHTML = aData.name;
+            jqTds[2].innerHTML = aData.nfcid;
+            jqTds[3].innerHTML = '<a class="edit" href="">Edit</a>';
+            jqTds[4].innerHTML = '<a class="delete" href="">Delete</a>';
 
         }
 
         function editRow(oTable, nRow) {
             var aData = oTable.fnGetData(nRow);
             var jqTds = $('>td', nRow);
-            jqTds[0].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[0] + '">';
-            jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[1] + '">';
-            jqTds[2].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[2] + '">';
-            jqTds[3].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[3] + '">';
-            jqTds[4].innerHTML = '<a class="edit" href="">Save</a>';
-            jqTds[5].innerHTML = '<a class="cancel" href="">Cancel</a>';
+            jqTds[0].innerHTML = '<input type="text" class="form-control input-small" value="' + aData._id + '">';
+            jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData.name + '">';
+            jqTds[2].innerHTML = '<input type="text" class="form-control input-small" value="' + aData.nfcid + '">';
+            jqTds[3].innerHTML = '<a class="cancel" href="">cancel</a>';
+            jqTds[4].innerHTML = '<a class="save" href="">Save</a>';
+            // jqTds[5].innerHTML = ;
         }
 
         function saveRow(oTable, nRow) {
             var jqInputs = $('input', nRow);
+            alert(jqInputs[0].value);
             oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
             oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
             oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
-            oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
             oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 4, false);
             oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 5, false);
             oTable.fnDraw();
+
+            // $.ajax({
+            //    url:'https://188.166.247.55:8080/handshake',
+            //    dataType: 'text',
+            //    method: 'POST',
+            //    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            //    success: function(response){
+            //      obj = JSON.parse(response);
+            //      //obj.token
+            //        $.ajax({
+            //         url: 'https://188.166.247.55:8080/addEmployee',
+            //         dataType: 'text',
+            //         method: 'POST',
+            //         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            //         data: {
+            //           session: localStorage.getItem('session'),
+            //           nfcid:nRow.cells[2].innerHTML,
+            //           token:obj.token
+            //         },
+            //         success: function(response){
+            //           obj = JSON.parse(response);
+            //           var temp = nRow.cells[1].innerHTML+" telah dihapus!";
+            //           if (obj.message == temp) {
+            //             alert(temp);
+            //             window.location.assign('table_editable.html');
+            //           }
+            //         },
+            //         error: function(xhr, status, error){
+            //           alert(error);
+            //         },
+            //         complete: function(){
+            //         }
+            //       });
+            //    },
+            //    error: function(xhr, status, error){
+            //      alert(error);
+            //    },
+            //    complete: function(){
+            //    }
+            //  });
         }
 
         function cancelEditRow(oTable, nRow) {
             var jqInputs = $('input', nRow);
+            console.log(jqInputs);
             oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
             oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
             oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
-            oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
             oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 4, false);
+            oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 4, false);
             oTable.fnDraw();
         }
 
         var table = $('#sample_editable_1');
 
+        var obj;
         var oTable = table.dataTable({
 
             // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
@@ -82,34 +129,32 @@ var TableEditable = function () {
             ], // set first column as a default sort by asc
 
              "ajax": { // define ajax settings
-                 "url": "https://188.166.247.55:8080/getAllEmployee", // ajax URL
-                 "type": "POST", // request type
-                 "timeout": 20000,
-                 "data": function(data) { // add request parameters before submit
-                     data.token = localStorage.getItem('token');
-                 },
-                 "dataSrc": function (json) {
-                   alert(json[0]._id);
-                  return json;
-                 }
+               "url": "https://188.166.247.55:8080/getAllEmployee", // ajax URL
+               "type": "POST", // request type
+               "timeout": 20000,
+               "data": function(data) { // add request parameters before submit
+                   data.token = localStorage.getItem('token');
+                   data.session = localStorage.getItem('session');
                },
-
-            // "data": [
-            //     [
-            //       "Airi",
-            //       "Satou",
-            //       "Accountant",
-            //       "Edit",
-            //       "Delete",
-            //     ],
-            //     [
-            //       "Airi",
-            //       "Satou",
-            //       "Accountant",
-            //       "Edit",
-            //       "Delete",
-            //     ]
-            //   ]
+               "dataSrc": function (json) {
+                return json;
+               }
+             },
+            "columns": [
+              {data: '_id'},
+              {data: 'name'},
+              {data: 'nfcid'},
+              {
+                data: null,
+                defaultContent: '<a class="edit">Edit</a>',
+                orderable: false
+              },
+              {
+                data: null,
+                defaultContent: '<a class="delete">Delete</a>',
+                orderable: false
+              }
+            ]
         });
 
         table.on( 'xhr', function () {
@@ -143,6 +188,11 @@ var TableEditable = function () {
 
                     return;
                 }
+            }else if (nEditing == nRow && this.innerHTML == "Save") {
+                /* Editing this row and want to save it */
+                saveRow(oTable, nEditing);
+                nEditing = null;
+                alert("Updated! Do not forget to do some ajax to sync with backend :)");
             }
 
             var aiNew = oTable.fnAddData(['', '', '', '', '', '']);
@@ -213,6 +263,19 @@ var TableEditable = function () {
                 restoreRow(oTable, nEditing);
                 nEditing = null;
             }
+        });
+
+        table.on('click', '.save', function (e) {
+            e.preventDefault();
+
+            if (nNew) {
+                oTable.fnDeleteRow(nEditing);
+                nEditing = null;
+                nNew = false;
+            } else {
+              alert('save');
+            }
+
         });
 
         table.on('click', '.edit', function (e) {
