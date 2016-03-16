@@ -234,7 +234,7 @@ var TableEditable = function () {
         });
 
         table.on('click', '.babi', function (e) {
-            // e.preventDefault();
+            e.preventDefault();
             var nRow = $(this).parents('tr')[0];
             var jqTds = $('input', nRow);
             var aData = oTable.fnGetData(nRow);
@@ -261,11 +261,12 @@ var TableEditable = function () {
                   },
                   success: function(response){
                     obj = JSON.parse(response);
+                    // alert('hao');
                     if (obj.message == 'nfcid has been used') {
 
                     }else{
                      saveRow(oTable, nEditing);
-                    //  window.location.assign('table_editable');
+
                     }
                     console.log(obj.message);
                   },
@@ -280,6 +281,7 @@ var TableEditable = function () {
                  alert(error);
                },
                complete: function(){
+                 window.location.assign('table_editable');
                }
              });
 
@@ -330,6 +332,7 @@ var TableEditable = function () {
                         alert(error);
                       },
                       complete: function(){
+                        window.location.assign('table_editable');
                       }
                     });
                    },
@@ -337,6 +340,7 @@ var TableEditable = function () {
                      alert(error);
                    },
                    complete: function(){
+                      //  window.location.assign('table_editable');
                    }
                  });
                 saveRow(oTable, nEditing);
