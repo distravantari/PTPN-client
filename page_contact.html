@@ -59,7 +59,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div class="page-header-inner">
 			<!-- BEGIN LOGO -->
 			<div class="page-logo">
-				<a href="index">
+				<a href="index.html">
 				<img src="assets/admin/img/logo-temp.png" alt="logo" class="logo-default"/>
 				</a>
 				<div class="menu-toggler sidebar-toggler">
@@ -80,7 +80,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					</button>
 					<ul class="dropdown-menu" role="menu">
 						<li>
-							<a href="page_contact">
+							<a href="page_contact.html">
 							<i class="icon-users"></i> Feedbacks <span class="badge badge-danger">new</span>
 							</a>
 						</li>
@@ -117,7 +117,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							<ul class="dropdown-menu">
 								<li class="external">
 									<h3><span class="bold">12 pending</span> notifications</h3>
-									<a href="page_timeline">view all</a>
+									<a href="page_timeline.html">view all</a>
 								</li>
 								<li>
 									<!-- <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
@@ -229,7 +229,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							</a>
 							<ul class="dropdown-menu dropdown-menu-default">
 								<li>
-									<a href="extra_profile_old">
+									<a href="extra_profile_old.html">
 									<i class="icon-user"></i> My Profile </a>
 								</li>
 								<li class="divider">
@@ -239,7 +239,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<i class="icon-lock"></i> Lock Screen </a>
 								</li> -->
 								<li>
-									<a href="login">
+									<a onclick="logout()">
 									<i class="icon-key"></i> Log Out </a>
 								</li>
 							</ul>
@@ -307,7 +307,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 					</li>
 					<li class="last ">
-						<a href="maps_google">
+						<a href="maps_google.html">
 						<i class="icon-pointer"></i>
 						<span class="title">Maps</span>
 						</a>
@@ -324,7 +324,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<span class="badge badge-warning">new</span>Radion</a>
 							</li>
 							<li class="start active ">
-								<a href="page_contact">
+								<a href="page_contact.html">
 								Contact Us</a>
 							</li>
 						</ul>
@@ -461,7 +461,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="index">Home</a>
+					<a href="index.html">Home</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
@@ -619,6 +619,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="assets/admin/scripts/layout.js" type="text/javascript"></script>
 <script src="assets/admin/scripts/demo.js" type="text/javascript"></script>
 <script src="assets/admin/pages/scripts/contact-us.js"></script>
+<script src="assets/admin/pages/scripts/logout.js" type="text/javascript"></script>
+<script src="assets/admin/pages/scripts/checksession.js" type="text/javascript"></script>
 <script>
 jQuery(document).ready(function() {
 	 $('.username').text(localStorage.getItem('username'));

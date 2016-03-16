@@ -203,7 +203,7 @@ var TableEditable = function () {
                       var temp = nRow.cells[1].innerHTML+" telah dihapus!";
                       if (obj.message == temp) {
                         alert(temp);
-                        window.location.assign('table_editable');
+                        window.location.assign('table_editable.html');
                       }
                     },
                     error: function(xhr, status, error){
@@ -281,7 +281,7 @@ var TableEditable = function () {
                  alert(error);
                },
                complete: function(){
-                 window.location.assign('table_editable');
+                 window.location.assign('table_editable.html');
                }
              });
 
@@ -332,7 +332,7 @@ var TableEditable = function () {
                         alert(error);
                       },
                       complete: function(){
-                        window.location.assign('table_editable');
+                        window.location.assign('table_editable.html');
                       }
                     });
                    },

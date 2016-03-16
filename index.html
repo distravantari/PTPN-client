@@ -68,7 +68,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<div class="page-header-inner">
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
-			<a href="index">
+			<a href="index.html">
 			<img src="assets/admin/img/logo-temp.png" alt="logo" class="logo-default"/>
 			</a>
 			<div class="menu-toggler sidebar-toggler">
@@ -89,7 +89,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				</button>
 				<ul class="dropdown-menu" role="menu">
 					<li>
-						<a href="page_contact">
+						<a href="page_contact.html">
 						<i class="icon-users"></i> Feedbacks <span class="badge badge-danger">new</span>
 						</a>
 					</li>
@@ -238,7 +238,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li>
-								<a href="extra_profile_old">
+								<a href="extra_profile_old.html">
 								<i class="icon-user"></i> My Profile </a>
 							</li>
 							<li class="divider">
@@ -2065,6 +2065,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="assets/admin/pages/scripts/index3.js" type="text/javascript"></script>
 <script src="assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
+<script src="assets/admin/pages/scripts/logout.js" type="text/javascript"></script>
+<script src="assets/admin/pages/scripts/checksession.js" type="text/javascript"></script>
 <script>
 jQuery(document).ready(function() {
  	$('.username').html(localStorage.getItem('username'));
@@ -2075,53 +2077,9 @@ jQuery(document).ready(function() {
  	 Tasks.initDashboardWidget(); // init tash dashboard widget
 
 	 if (localStorage.getItem('session') == '') {
-	 	window.location.assign('login');
+	 	window.location.assign('login.html');
 	 }
 });
-
-function logout(){
-	$.ajax({
-		 url:'https://188.166.247.55:8080/handshake',
-		 dataType: 'text',
-		 method: 'POST',
-		 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-		 success: function(response){
-			 obj = JSON.parse(response);
-			 $.ajax({
-				url: 'https://188.166.247.55:8080/logout',
-				dataType: 'text',
-				method: 'POST',
-				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-				data: {
-				session: localStorage.getItem('session'),
-					username:localStorage.getItem('username'),
-					token:obj.token
-				},
-				success: function(response){
-					obj = JSON.parse(response);
-					// alert(obj.message);
-					if (obj.message == "Success logout") {
-						// form.submit();
-						window.location.assign('login.html');
-						localStorage.setItem('username','');
-						localStorage.setItem('session','');
-					}
-				},
-				error: function(xhr, status, error){
-					alert(error);
-				},
-				complete: function(){
-				}
-			});
-		 },
-		 error: function(xhr, status, error){
-			 alert('error');
-		 },
-		 complete: function(){
-		 }
-	 });
-}
-
 </script>
 <!-- END JAVASCRIPTS -->
 </body>
