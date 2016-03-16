@@ -578,7 +578,7 @@ $.ajax({
 					 //ajax call username by nfcid
 					 var nfcids = obj2[i].nfcid;
 					 var statuss = obj2[i].status;
-					 var locations = obj2[i].location;
+					 var geolocations = obj2[i].geolocation;
 					   $.ajax({
 	 	         url: 'https://188.166.247.55:8080/getUsernameById',
 	 	         dataType: 'text',
@@ -604,7 +604,7 @@ $.ajax({
 										"</div>"+
 									"</div>"+
 									"<div class='timeline-body-content'>"+
-										"<span class='timeline-body-time font-grey-cascade'>"+locations+"</span>"+"<br>"+
+										"<span class='timeline-body-time font-grey-cascade'>"+geolocations+"</span>"+"<br>"+
 										"<span class='timeline-body-title font-blue-madison'>"+nfcids+"</span>"+
 									"</div>"+
 								"</div>"+
