@@ -1,4 +1,4 @@
-//checkSession();
+checkSession();
 
 function checkSession() {
 		$.ajax({
@@ -11,7 +11,7 @@ function checkSession() {
 		      //obj.token
 					localStorage.setItem('token',obj.token);
 				$.ajax({
-		         url: 'https://188.166.247.55:8080/getAllEmployee',
+		         url: 'https://188.166.247.55:8080/checkSession',
 		         dataType: 'text',
 		         method: 'POST',
 		         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -21,6 +21,10 @@ function checkSession() {
 		         },
 		         success: function(response){
 		           obj = JSON.parse(response);
+		           if (obj.message == "Invalid session") {
+		           		window.location.assign('login.html');
+		           		alert('Session has expired.');
+		           }
 		         },
 		         error: function(xhr, status, error){
 		           //alert(error);
@@ -37,5 +41,5 @@ function checkSession() {
 		    complete: function(){
 		    }
 		});
-		setTimeout("checkSession()", 5000);
+		setTimeout("checkSession()", 300000);
 }
