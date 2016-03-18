@@ -33,6 +33,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
+<link href="assets/global/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css"/>
 <link rel="stylesheet" type="text/css" href="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
 <!-- END PAGE LEVEL STYLES -->
@@ -232,11 +233,11 @@ License: You must have a valid license purchased only from themeforest(the above
 							<img alt="" class="img-circle" src="assets/admin/img/user.png"/>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-default">
-								<li>
+								<!-- <li>
 									<a href="extra_profile_old.html">
 									<i class="icon-user"></i> My Profile </a>
 								</li>
-								<li class="divider">
+								<li class="divider"> -->
 								</li>
 								<!-- <li>
 									<a href="extra_lock.html">
@@ -303,6 +304,12 @@ License: You must have a valid license purchased only from themeforest(the above
 								List</a>
 							</li>
 						</ul>
+					</li>
+					<li>
+						<a href="page_report.html">
+						<i class="fa fa-file-o"></i>
+						<span class="title">Report</span>
+						</a>
 					</li>
 					<li>
 						<a href="extra_faq.html">
@@ -482,7 +489,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											</button>
 										</div>
 									</div>
-									<div class="col-md-6">
+									<!-- <div class="col-md-6">
 										<div class="btn-group pull-right">
 											<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
 											</button>
@@ -501,10 +508,10 @@ License: You must have a valid license purchased only from themeforest(the above
 												</li>
 											</ul>
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</div>
-							<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+							<table class="table table-striped table-hover table-bordered dataTable" id="sample_editable_1">
 							<thead>
 							<tr>
 								<th>
@@ -573,6 +580,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
 <script type="text/javascript" src="assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 <script type="text/javascript" src="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
