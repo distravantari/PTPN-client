@@ -642,7 +642,13 @@ jQuery(document).ready(function() {
 	          var minute=0;
 	          for (var i = 0; i < obj.result.length; i++) {
 	            $("#sample_editable_1 > tbody").append("<tr><td>"+obj.result[i].tapin+"</td><td>"+obj.result[i].tapout+"</td><td>"+obj.result[i].duration+"</td><td>"+obj.result[i].date+"</td></tr>");
+	            var arr=obj.result[i].duration.split("h");
+	            hour+=Number(arr[0]);
+	            var str=obj.result[i].duration;
+	            minute+=Number(str.substring(str.lastIndexOf(" ")+1,str.lastIndexOf("m")));
 	          }
+	          hour+=Math.floor(minute/60);
+	          minute=minute%60;
 	          $("#sample_editable_1 > tbody").append("<tr><td></td><td>TOTAL</td><td>"+hour+"h "+minute+"m</td><td></td></tr>");
 	         },
 	         error: function(xhr, status, error){
