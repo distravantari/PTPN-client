@@ -1,4 +1,4 @@
-domain = 'https://188.166.247.55:8080';
+domain = 'https://ptpn8rancabali.com:8080';
 
 var Login = function() {
 

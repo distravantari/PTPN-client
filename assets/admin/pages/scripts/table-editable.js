@@ -105,7 +105,7 @@ var TableEditable = function () {
             ], // set first column as a default sort by asc
 
              "ajax": { // define ajax settings
-               "url": "https://188.166.247.55:8080/getAllEmployee", // ajax URL
+               "url": "https://ptpn8rancabali.com:8080/getAllEmployee", // ajax URL
                "type": "POST", // request type
                "timeout": 20000,
                "data": function(data) { // add request parameters before submit
@@ -186,7 +186,7 @@ var TableEditable = function () {
             oTable.fnDeleteRow(nRow);
             // console.log(nRow.cells[2].innerHTML);
             $.ajax({
-               url:'https://188.166.247.55:8080/handshake',
+               url:'https://ptpn8rancabali.com:8080/handshake',
                dataType: 'text',
                method: 'POST',
                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -194,7 +194,7 @@ var TableEditable = function () {
                  obj = JSON.parse(response);
                  //obj.token
                    $.ajax({
-                    url: 'https://188.166.247.55:8080/deleteEmployee',
+                    url: 'https://ptpn8rancabali.com:8080/deleteEmployee',
                     dataType: 'text',
                     method: 'POST',
                     contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -246,14 +246,14 @@ var TableEditable = function () {
 
             // console.log(jqTds[1].value);
             $.ajax({
-               url:'https://188.166.247.55:8080/handshake',
+               url:'https://ptpn8rancabali.com:8080/handshake',
                dataType: 'text',
                method: 'POST',
                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
                success: function(response){
                  obj = JSON.parse(response);
                  $.ajax({
-                  url: 'https://188.166.247.55:8080/addEmployee',
+                  url: 'https://ptpn8rancabali.com:8080/addEmployee',
                   dataType: 'text',
                   method: 'POST',
                   contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -308,14 +308,14 @@ var TableEditable = function () {
                 /* Editing this row and want to save it */
                 // alert("Updated! Do not forget to do some ajax to sync with backend :)");
                 $.ajax({
-                   url:'https://188.166.247.55:8080/handshake',
+                   url:'https://ptpn8rancabali.com:8080/handshake',
                    dataType: 'text',
                    method: 'POST',
                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
                    success: function(response){
                      obj = JSON.parse(response);
                      $.ajax({
-                      url: 'https://188.166.247.55:8080/addEmployee',
+                      url: 'https://ptpn8rancabali.com:8080/addEmployee',
                       dataType: 'text',
                       method: 'POST',
                       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',

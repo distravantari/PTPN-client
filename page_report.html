@@ -616,7 +616,7 @@ jQuery(document).ready(function() {
 	function getReport() {
 	var nfcid = $("#nfcid").val();
 	$.ajax({
-	    url: 'https://188.166.247.55:8080/handshake',
+	    url: 'https://ptpn8rancabali.com:8080/handshake',
 	    dataType: 'text',
 	    method: 'POST',
 	    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -625,7 +625,7 @@ jQuery(document).ready(function() {
 	      //obj.token
 				localStorage.setItem('token',obj.token);
 			$.ajax({
-	         url: 'https://188.166.247.55:8080/getReport',
+	         url: 'https://ptpn8rancabali.com:8080/getReport',
 	         dataType: 'text',
 	         method: 'POST',
 	         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',

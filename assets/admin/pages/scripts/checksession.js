@@ -2,7 +2,7 @@ checkSession();
 
 function checkSession() {
 		$.ajax({
-		    url: 'https://188.166.247.55:8080/handshake',
+		    url: 'https://ptpn8rancabali.com:8080/handshake',
 		    dataType: 'text',
 		    method: 'POST',
 		    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -11,7 +11,7 @@ function checkSession() {
 		      //obj.token
 					localStorage.setItem('token',obj.token);
 				$.ajax({
-		         url: 'https://188.166.247.55:8080/checkSession',
+		         url: 'https://ptpn8rancabali.com:8080/checkSession',
 		         dataType: 'text',
 		         method: 'POST',
 		         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',

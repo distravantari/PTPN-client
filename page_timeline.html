@@ -557,7 +557,7 @@ jQuery(document).ready(function() {
 
 var obj2;
 $.ajax({
-	 url: 'https://188.166.247.55:8080/handshake',
+	 url: 'https://ptpn8rancabali.com:8080/handshake',
 	 dataType: 'text',
 	 method: 'POST',
 	 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -567,7 +567,7 @@ $.ajax({
 		 localStorage.setItem('token',obj1.token);
 		//  alert(obj.token)
 			 $.ajax({
-			  url: 'https://188.166.247.55:8080/getAllHistory',
+			  url: 'https://ptpn8rancabali.com:8080/getAllHistory',
 			  dataType: 'text',
 			  method: 'POST',
 			  contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -586,7 +586,7 @@ $.ajax({
 					 var statuss = obj2[i].status;
 					 var geolocations = obj2[i].geolocation;
 					   $.ajax({
-	 	         url: 'https://188.166.247.55:8080/getUsernameById',
+	 	         url: 'https://ptpn8rancabali.com:8080/getUsernameById',
 	 	         dataType: 'text',
 	 	         method: 'POST',
 	 	         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
