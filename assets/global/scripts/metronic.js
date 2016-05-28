@@ -27,14 +27,12 @@ var Metronic = function() {
           // alert(obj.message);
         },
         error: function(xhr, status, error){
-          alert(error);
         },
         complete: function(){
         }
       });
      },
      error: function(xhr, status, error){
-       alert(error);
      },
      complete: function(){
      }
