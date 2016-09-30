@@ -21,15 +21,17 @@ function logout(){
 					// alert(obj.message);
 					if (obj.message == "Success logout") {
 						// form.submit();
-						window.location.assign('login.html');
+						window.location.assign('index.html');
 						localStorage.setItem('username','');
 						localStorage.setItem('session','');
 					}
+					window.location.assign('index.html');
 				},
 				error: function(xhr, status, error){
 					alert(error);
 				},
 				complete: function(){
+					window.location.assign('index.html');
 				}
 			});
 		 },

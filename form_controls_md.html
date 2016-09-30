@@ -59,7 +59,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div class="page-header-inner">
 			<!-- BEGIN LOGO -->
 			<div class="page-logo">
-				<a href="index.html">
+				<a href="dashboard.html">
 				<img src="assets/admin/img/ptpn_logo.png" alt="logo" class="logo-default"/>
 				</a>
 				<div class="menu-toggler sidebar-toggler">
@@ -259,7 +259,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 				<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
 					<li>
-						<a href="index.html">
+						<a href="dashboard.html">
 						<i class="icon-home"></i>
 						<span class="title">Dashboard</span>
 						</a>
@@ -365,7 +365,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
-					<a href="index.html">Home</a>
+					<a href="dashboard.html">Home</a>
 					<i class="fa fa-circle"></i>
 				</li>
 				<li>
@@ -488,7 +488,7 @@ jQuery(document).ready(function() {
 	 Demo.init(); // init demo features
 });
 function cancel(){
-	window.location.assign('index.html');
+	window.location.assign('dashboard.html');
 }
 $('.form-horizontal').validate({
 	errorElement: 'span', //default input error message container
@@ -550,14 +550,14 @@ $('.form-horizontal').validate({
 					}
 				 },
 				 error: function(xhr, status, error){
-					 alert(error);
+					//  alert(error);
 				 },
 				 complete: function(){
 				 }
 			 });
 			 },
 			 error: function(xhr, status, error){
-				 alert(error);
+				//  alert(error);
 			 },
 			 complete: function(){
 			 }

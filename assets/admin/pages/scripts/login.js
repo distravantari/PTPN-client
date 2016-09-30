@@ -285,20 +285,20 @@ var Login = function() {
                           obj = JSON.parse(response);
                           if (obj.message == "Success add new manager!") {
                             alert(obj.message);
-                            window.location.assign('login.html');
+                            window.location.assign('index.html');
                           }else{
                            $('.alert-danger', $('.register-form')).show();
                          }
                         },
                         error: function(xhr, status, error){
-                          alert(error);
+                          // alert(error);
                         },
                         complete: function(){
                         }
                       });
                    },
                    error: function(xhr, status, error){
-                     alert(error);
+                    //  alert(error);
                    },
                    complete: function(){
                    }
